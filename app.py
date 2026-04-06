@@ -133,8 +133,10 @@ def load_data():
         st.warning("📊 Data not found. Generating...")
 
         import subprocess
+        import sys
+
         result = subprocess.run(
-            ['python', str(BASE_DIR / 'data' / 'generate_data.py')],
+            [sys.executable, str(BASE_DIR / 'data' / 'generate_data.py')],
             capture_output=True,
             text=True
         )
@@ -163,8 +165,9 @@ def load_models():
         st.info(f"Missing: {', '.join(missing)}")
 
         import subprocess
+        import sys
         result = subprocess.run(
-            ['python', str(model_dir / 'train_models.py')],
+            [sys.executable, str(model_dir / 'train_models.py')],
             capture_output=True,
             text=True
         )
